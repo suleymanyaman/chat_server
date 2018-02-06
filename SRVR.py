@@ -4,13 +4,14 @@ from threading import Thread
 def accept_incoming_connections():
     while True:
         client, client_adress = SERVER.accept()
-        client.send("Welcome to the NSA. Your messages are secured by encryption. Choose a nickname for yourself. For quitting, type EXIT N.S.A".encode())
+        client.send("Your messages are secured by encryption. Choose a nickname for yourself. For quitting, type {quit}".encode())
         print("%s:%s has connected" % client_adress)
         #adresses[client]=client_adress
         Thread(target=handle_client, args=(client,)).start()
 
 def handle_client(client):
     name = client.recv(1024).decode()
+    welcome = 'Welcome %s! If you ever want to quit, type {quit} to exit.' % name
     msg = "{} is online".format(name)
     broadcast(msg.encode())
     clients.append(client)
