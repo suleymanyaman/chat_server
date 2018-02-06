@@ -37,7 +37,7 @@ def broadcast(msg, prefix=""):
 clients=[]
 adresses={}
 
-HOST = "192.168.1.34"
+HOST = "0.0.0.0"
 PORT = 5000
 ADDR = (HOST,PORT)
 
