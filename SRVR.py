@@ -20,7 +20,6 @@ def handle_client(client):
 
     while True:
         msg = client.recv(1024)
-        print(msg)
         if msg.decode() != "EXIT":
             broadcast(msg, name+": ")
 
